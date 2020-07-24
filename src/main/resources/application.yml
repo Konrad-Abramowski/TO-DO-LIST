@@ -4,3 +4,5 @@ spring:
        path: '/console'
   datasource:
     url: 'jdbc:h2:/home/konrad/IdeaProjects/todoapp/tododb'
+my:
+  prop: 'test'
