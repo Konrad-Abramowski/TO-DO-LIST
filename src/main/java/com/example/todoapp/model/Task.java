@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 public
 class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "Task's description must be not empty")
     private String description;
@@ -18,7 +18,8 @@ class Task {
         return id;
     }
 
-    public Task(){}
+    public Task() {
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -29,8 +30,8 @@ class Task {
     }
 
     public void setDescription(String description) {
-        if(description!="")
-        this.description = description;
+        if (description != "")
+            this.description = description;
     }
 
     public boolean isDone() {
