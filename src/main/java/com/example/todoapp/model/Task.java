@@ -1,5 +1,7 @@
 package com.example.todoapp.model;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -15,6 +17,8 @@ class Task {
     private String description;
     private boolean done;
     private LocalDateTime deadline;
+    private LocalDateTime createdOn;
+    private LocalDateTime updatedOn;
 
     public int getId() {
         return id;
@@ -23,7 +27,7 @@ class Task {
     public Task() {
     }
 
-    public void setId(int id) {
+     void setId(int id) {
         this.id = id;
     }
 
@@ -50,5 +54,21 @@ class Task {
 
     void setDeadline(final LocalDateTime deadline) {
         this.deadline = deadline;
+    }
+
+    public void updateFrom(final Task source){
+        description = source.description;
+        done = source.done;
+        deadline = source.deadline;
+    }
+
+    @PrePersist
+    void prPersist(){
+        createdOn = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    void preUpdate(){
+        updatedOn = LocalDateTime.now();
     }
 }
