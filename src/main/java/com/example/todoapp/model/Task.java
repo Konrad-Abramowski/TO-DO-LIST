@@ -1,7 +1,5 @@
 package com.example.todoapp.model;
 
-import org.apache.tomcat.jni.Local;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -9,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tasks")
 public
-class Task {
+class Task{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,8 +15,8 @@ class Task {
     private String description;
     private boolean done;
     private LocalDateTime deadline;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
+    @Embedded
+    private Audit audit = new Audit();
 
     public int getId() {
         return id;
@@ -62,13 +60,5 @@ class Task {
         deadline = source.deadline;
     }
 
-    @PrePersist
-    void prPersist(){
-        createdOn = LocalDateTime.now();
-    }
 
-    @PreUpdate
-    void preUpdate(){
-        updatedOn = LocalDateTime.now();
-    }
 }
