@@ -6,10 +6,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
-public
-class Task{
+public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
     @NotBlank(message = "Task's description must be not empty")
     private String description;
@@ -17,6 +16,10 @@ class Task{
     private LocalDateTime deadline;
     @Embedded
     private Audit audit = new Audit();
+    @ManyToOne
+    @JoinColumn(name = "task_group_id")
+    private TaskGroup group;
+
 
     public int getId() {
         return id;
@@ -25,7 +28,7 @@ class Task{
     public Task() {
     }
 
-     void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
@@ -54,10 +57,19 @@ class Task{
         this.deadline = deadline;
     }
 
-    public void updateFrom(final Task source){
+//    TaskGroup getGroup() {
+//        return group;
+//    }
+//
+//    void setGroup(final TaskGroup group) {
+//        this.group = group;
+//    }
+
+    public void updateFrom(final Task source) {
         description = source.description;
         done = source.done;
         deadline = source.deadline;
+        //group = source.group;
     }
 
 
