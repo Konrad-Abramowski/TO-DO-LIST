@@ -17,6 +17,9 @@ public class TaskGroup {
     // private Audit audit = new Audit();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
     private Set<Task> tasks;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     public int getId() {
         return id;
@@ -53,5 +56,13 @@ public class TaskGroup {
 
     public void setTasks(final Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    Project getProject() {
+        return project;
+    }
+
+    void setProject(final Project project) {
+        this.project = project;
     }
 }
