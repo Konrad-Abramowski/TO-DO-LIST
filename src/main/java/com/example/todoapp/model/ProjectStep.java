@@ -32,7 +32,7 @@ public class ProjectStep {
         this.description = description;
     }
 
-    public int getDays_to_deadline() {
+    public int getDaysToDeadline() {
         return days_to_deadline;
     }
 
