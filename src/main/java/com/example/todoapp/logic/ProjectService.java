@@ -5,7 +5,6 @@ import com.example.todoapp.model.*;
 import com.example.todoapp.model.projection.GroupReadModel;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class ProjectService {
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
-        if (config.getTemplate().isAllowMultipleTasks() && taskGroupRepository.existsByDoneIsFalseAndProject_Id(projectId)) {
+        if (!config.getTemplate().isAllowMultipleTasks() && taskGroupRepository.existsByDoneIsFalseAndProject_Id(projectId)) {
             throw new IllegalStateException("Only one undone group from project is allowed");
         }
         TaskGroup result = repository.findById(projectId)
