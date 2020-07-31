@@ -3,13 +3,14 @@ package com.example.todoapp.logic;
 import com.example.todoapp.TaskConfigurationProperties;
 import com.example.todoapp.model.*;
 import com.example.todoapp.model.projection.GroupReadModel;
-import org.springframework.stereotype.Service;
+
+
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+
 public class ProjectService {
     private ProjectRepository repository;
     private TaskGroupRepository taskGroupRepository;
