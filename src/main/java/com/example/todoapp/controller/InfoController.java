@@ -18,12 +18,12 @@ class InfoController {
     }
 
     @GetMapping("/info/url")
-    String url(){
+    String url() {
         return dataSourceProperties.getUrl();
     }
 
     @GetMapping("/info/prop")
-    boolean myProp(){
+    boolean myProp() {
         return taskConfigurationProperties.getTemplate().isAllowMultipleTasks();
     }
 }

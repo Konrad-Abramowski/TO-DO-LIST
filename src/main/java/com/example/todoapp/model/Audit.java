@@ -7,18 +7,18 @@ import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
 @Embeddable
- class Audit {
+class Audit {
 
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 
     @PrePersist
-    void prPersist(){
+    void prPersist() {
         createdOn = LocalDateTime.now();
     }
 
     @PreUpdate
-    void preUpdate(){
+    void preUpdate() {
         updatedOn = LocalDateTime.now();
     }
 }
