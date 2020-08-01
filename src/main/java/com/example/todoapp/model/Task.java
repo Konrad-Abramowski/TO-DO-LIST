@@ -22,17 +22,26 @@ public class Task {
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
 
-
-    public int getId() {
-        return id;
-    }
-
     public Task() {
+
     }
 
     public Task(String description, LocalDateTime deadline) {
         this.description = description;
         this.deadline = deadline;
+    }
+
+    public Task(String description, LocalDateTime deadline, TaskGroup group) {
+        this(description,deadline);
+        if(group != null){
+            this.group = group;
+        }
+    }
+
+
+
+    public int getId() {
+        return id;
     }
 
     void setId(int id) {
