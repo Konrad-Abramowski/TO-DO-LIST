@@ -1,6 +1,5 @@
 package com.example.todoapp.logic;
 
-
 import com.example.todoapp.model.TaskGroup;
 import com.example.todoapp.model.TaskGroupRepository;
 import com.example.todoapp.model.TaskRepository;
