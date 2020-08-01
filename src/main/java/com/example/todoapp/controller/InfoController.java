@@ -1,12 +1,13 @@
 package com.example.todoapp.controller;
 
 import com.example.todoapp.TaskConfigurationProperties;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/info")
 class InfoController {
 
     private DataSourceProperties dataSourceProperties;
@@ -17,12 +18,12 @@ class InfoController {
         this.taskConfigurationProperties = taskConfigurationProperties;
     }
 
-    @GetMapping("/info/url")
+    @GetMapping("/url")
     String url() {
         return dataSourceProperties.getUrl();
     }
 
-    @GetMapping("/info/prop")
+    @GetMapping("/prop")
     boolean myProp() {
         return taskConfigurationProperties.getTemplate().isAllowMultipleTasks();
     }
