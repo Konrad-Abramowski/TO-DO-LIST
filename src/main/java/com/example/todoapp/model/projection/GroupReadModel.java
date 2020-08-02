@@ -4,17 +4,18 @@ import com.example.todoapp.model.Task;
 import com.example.todoapp.model.TaskGroup;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GroupReadModel {
+    private int id;
     private String description;
     // Deadline from the latest task in group
     private LocalDateTime deadline;
     private Set<GroupTaskReadModel> tasks;
 
     public GroupReadModel(TaskGroup source) {
+        id = source.getId();
         description = source.getDescription();
         source.getTasks().stream()
                 .map(Task::getDeadline)
@@ -48,5 +49,13 @@ public class GroupReadModel {
 
     public void setTasks(final Set<GroupTaskReadModel> tasks) {
         this.tasks = tasks;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
     }
 }

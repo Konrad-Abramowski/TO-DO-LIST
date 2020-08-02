@@ -5,6 +5,8 @@ import com.example.todoapp.model.TaskGroupRepository;
 import com.example.todoapp.model.TaskRepository;
 import com.example.todoapp.model.projection.GroupReadModel;
 import com.example.todoapp.model.projection.GroupWriteModel;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,5 +41,15 @@ public class TaskGroupService {
         result.setDone(!result.isDone());
         taskGroupRepository.save(result);
 
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    ResponseEntity<?> handleIllegalArgument(IllegalArgumentException e) {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    ResponseEntity<String> handleIllegalState(IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 }
