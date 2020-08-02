@@ -28,7 +28,7 @@ public class ProjectStep {
         return description;
     }
 
-    void setDescription(final String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -36,7 +36,7 @@ public class ProjectStep {
         return days_to_deadline;
     }
 
-    void setDays_to_deadline(final int days_to_deadline) {
+    public void setDaysToDeadline(final int days_to_deadline) {
         this.days_to_deadline = days_to_deadline;
     }
 
@@ -44,7 +44,7 @@ public class ProjectStep {
         return project;
     }
 
-    void setProject(final Project project) {
+    public void setProject(final Project project) {
         this.project = project;
     }
 }
